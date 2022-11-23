@@ -39,7 +39,8 @@ annotation_volume_location = fullfile(...
 structure_tree_location = 'structure_tree_safe_2017.csv'; % located in github repo
 CCF_to_FP_location =  'CCF_to_FP.csv'; % located in github repo
 FP_table_location = 'FP_table_Chon_2020.csv'; % located in github repo
-chon_images_loc = 'Suppl_File1_Labels'; % from chon et al (supplementary data 4, https://www.nature.com/articles/s41467-019-13057-w)
+chon_images_loc = fullfile(...
+    getallenpath, 'Suppl_File1_Labels' ); % from chon et al (supplementary data 4, https://www.nature.com/articles/s41467-019-13057-w)
 
 % generate values for pixel-to-coordinate transformation
 bregma = allenCCFbregma(); % estimated bregma position in reference data space
@@ -52,12 +53,12 @@ CCFpoints_color = [.5 .5 1];
 
 %% load the reference brain annotations
 if ~exist('av','var') || ~exist('st','var')
-    disp('loading reference atlas...')
+%     disp('loading reference atlas...')
     av = readNPY(annotation_volume_location);
     st = loadStructureTree(structure_tree_location);
 end
 if ~exist('CCFtoFPtable','var') || ~exist('FPtable','var')
-    disp('loading CCF-FP lookup tables...')
+%     disp('loading CCF-FP lookup tables...')
     CCFtoFPtable = loadCCFtoFP(CCF_to_FP_location);
     FPtable = loadFPtable(FP_table_location);
 end
@@ -73,6 +74,12 @@ for point = 1:size(CCFpoints,1)
 
     % find the annotation, name, and acronym of the current point from
     % Allen CCF data
+    
+    % Round points to nearest integer.
+    if any( mod( CCFpoints, 1 ) ~= 0, 'all' )
+        CCFpoints = round( CCFpoints );
+        disp( 'Rounded CCF points to nearest integers.' )
+    end
     ann = av(CCFpoints(point,1),CCFpoints(point,2),CCFpoints(point,3));
     name = st.safe_name{ann};
     acr = st.acronym{ann};
