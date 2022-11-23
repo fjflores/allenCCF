@@ -78,7 +78,7 @@ for point = 1:size(CCFpoints,1)
     % Round points to nearest integer.
     if any( mod( CCFpoints, 1 ) ~= 0, 'all' )
         CCFpoints = round( CCFpoints );
-        disp( 'Rounded CCF points to nearest integers.' )
+        warning( 'Rounded CCF points to nearest integers.' )
     end
     ann = av(CCFpoints(point,1),CCFpoints(point,2),CCFpoints(point,3));
     name = st.safe_name{ann};
@@ -119,7 +119,7 @@ figure(fwireframe); hold on
 hp = plot3(CCFpoints(:,1), CCFpoints(:,3), CCFpoints(:,2), '.','linewidth',2, 'color',CCFpoints_color,'markers',10);   
 
 % display table
-disp( tab )
+% disp( tab )
 
 
 
