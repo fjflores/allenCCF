@@ -15,7 +15,7 @@ switch pc
         ccfPath = 'D:\Dropbox (Personal)\Protocols\Histology\AllenCCF';
         
     case 'HADES'
-        ccfPath = 'D:\Dropbox (MIT)\Protocols\Histology\AllenCCF';
+        ccfPath = 'D:\Dropbox (Personal)\Protocols\Histology\AllenCCF';
         
     otherwise
         error( 'Unknown Computer' )
