@@ -6,7 +6,7 @@ switch pc
         ccfPath = 'D:\Dropbox (MIT)\Protocols\Histology\AllenCCF';
         
     case 'ACHILLES'
-        ccfPath = 'E:\Dropbox (MIT)\Protocols\Histology\AllenCCF';
+        ccfPath = 'E:\Dropbox (Personal)\Administrativo\MIT\Protocols\Histology\AllenCCF';
         
     case 'ZENZEN'
         ccfPath = 'C:\Users\Isabella\Dropbox (Personal)\Protocols\Histology\AllenCCF';
